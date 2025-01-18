@@ -2,6 +2,6 @@ services:
   bialet:
     build: _app
     ports:
-      - ${BIALET_PORT:-7000}:7000
+      - ${BIALET_PORT:-7001}:7000
     volumes:
       - .:/var/www
