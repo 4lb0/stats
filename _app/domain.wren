@@ -1,10 +1,6 @@
-//
-// Write your domain logic here
-//
-// @see https://bialet.dev
-
-class BialetDocumentation {
-  construct new() {}
-  label { "Getting Started guide" }
-  url { "https://bialet.dev/getting-started.html" }
+class Stats {
+  static increase(key) {
+    `INSERT INTO stats (key, counter) VALUES (?, 1) ON CONFLICT (key) DO UPDATE SET counter = counter + 1`.query(key)
+  }
+  static all() { `SELECT * FROM stats ORDER BY counter DESC`.fetch() }
 }
