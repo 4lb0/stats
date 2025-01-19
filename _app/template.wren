@@ -1,8 +1,3 @@
-//
-// You can use this object to create your own templates
-//
-// @see https://bialet.dev
-
 class Template {
 
   static layout(title, content, meta) { <!doctype html>
@@ -18,6 +13,8 @@ class Template {
         {{ content }}
       </body>
     </html> }
+  
+  static layout(title, content) { layout(title, content, {}) }
 
   static url(url) { <!doctype html>
     <html>
@@ -54,7 +51,4 @@ class Template {
     </main>
     return layout(TITLE, html)
   }
-
-
-  static layout(title, content) { layout(title, content, {}) }
 }
