@@ -10,10 +10,21 @@ class Template {
         {{ meta.map { |m| '<meta name="%( m['key'] )" content="%( m['value'] )">' } }}
       </head>
       <body>
-        {{ content }}
+        <h1 class="text-center">{{ title }}</h1>
+        <main>
+          {{ content }}
+        </main>
+        <footer>
+          <span><strong>Estadísticas de click anónimas</strong></span>
+          <span>
+            <a href="https://github.com/4lb0/stats" aria-label="Ver en GitHub">
+              <i class="gh" aria-hidden="true" title="GitHub"></i>
+            </a>
+          </span>
+        </footer>
       </body>
     </html> }
-  
+
   static layout(title, content) { layout(title, content, {}) }
 
   static url(url) { <!doctype html>
@@ -33,22 +44,20 @@ class Template {
 
   static home(stats) {
     var TITLE = "Stats"
-    var html = <main>
-      <h1 class="text-center">{{ TITLE }}</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>URL</th>
-            <th>Clicks</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{ stats.map { |stats| <tr>
-              <td><a href="{{ stats['key'] }}">{{ stats['key'] }}</a></td>
-              <td>{{ stats['counter'] }}</td>
-            </tr> } }}
-        </tbody>
-    </main>
+    var html = <table>
+      <thead>
+        <tr>
+          <th>URL</th>
+          <th>Clicks</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ stats.map { |stats| <tr>
+            <td><a href="{{ stats['key'] }}">{{ stats['key'] }}</a></td>
+            <td>{{ stats['counter'] }}</td>
+          </tr> } }}
+      </tbody>
+    </table>
     return layout(TITLE, html)
   }
 }
