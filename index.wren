@@ -7,7 +7,7 @@ if (Request.isPost) {
   }
   var url = Request.post("url")
   Stats.increase(url)
-  return Response.out(Template.url(url))
+  return Template.url(url)
 }
 
-Response.out(Template.home(Stats.all()))
+return Template.home(Stats.all())
