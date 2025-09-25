@@ -1,5 +1,3 @@
-import "bialet" for Db
-
 Db.migrate("Tabla stats", `
   CREATE TABLE stats (
     key TEXT PRIMARY KEY NOT NULL,
